@@ -1,18 +1,22 @@
 # Welcome to Debloating Windows
 
-This script automates the uninstallation of 45+ Windows (and HP) applications that are installed onto your PC by default.
+This Python script automates the uninstallation of 45+ Windows (and HP) applications that are installed onto your PC by default.
 
-It will also handle the Registries for Xbox Game Bar and OneDrive
+It will also handle the Registries for Xbox Game Bar and OneDrive.
 
 # Prerequisites 
 
 - Install **App Installer** from Microsoft Store
 
-- Install **Python 3.10+** from the [Python Website](https://www.python.org/downloads/)
+- Install **Python 3.10.x** from the [Python Website](https://www.python.org/downloads/)
 
 # Installation
 
-Open the Terminal as Administrator and run `py main.py` in the same local directory.
+Download the [Latest Release](https://github.com/paulllee/debloat-windows/releases)
+
+# Instructions
+
+Right click the `debloat-windows.exe` file and click **Run as Administrator**. Then follow the instructions provided in the terminal.
 
 # Post Installation
 
