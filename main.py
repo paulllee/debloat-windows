@@ -1,12 +1,11 @@
 # Program: Debloat Windows 11 - Specific to HP Devices but Works on All Windows Devices
 # Author: Paul Lee (https://github.com/paulllee)
-# Date: July 10th, 2022
 
 import os, ctypes, sys
 
 def run(command):
     fullCommand = 'powershell.exe "{}"'.format(command)
-    print("\nrunning:", fullCommand)
+    print('\nrunning:', fullCommand)
     return os.system(fullCommand)
 
 def uninstall(applicationName):
@@ -14,7 +13,7 @@ def uninstall(applicationName):
 
 isAdmin = ctypes.windll.shell32.IsUserAnAdmin()
 if (not isAdmin):
-    print('Please run terminal as administrator to start the script.')
+    input('Please run file as administrator to start the script. Press enter to close...')
     sys.exit()
 
 print('Welcome to Debloating Windows!')
@@ -84,7 +83,7 @@ while not isFinish:
     for num, name in enumerate(apps):
         print('{}. {}'.format(num + 1, name))
 
-    userInput = input('\nType in the number next to the app you want to keep (type "finish" to continue): ').lower()
+    userInput = input('\nType in the number next to the app you want to remove from the list (type "finish" to continue): ').lower()
     
     if userInput == 'finish':
         isFinish = True
@@ -94,15 +93,21 @@ while not isFinish:
         except:
             print('Invalid number.')
 
+apps = [
+    "Xbox Game Bar",
+    "OneDrive",
+    "Microsoft OneDrive"
+]
+
 for name in apps:
     uninstall(name)
 
 if 'Xbox Game Bar' in apps:
-    print("Fixing no Xbox Game Bar pop up.")
+    print('\n\nFixing no Xbox Game Bar pop up.')
     run('REG ADD \'HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameDVR\' /v AppCaptureEnabled /t REG_DWORD /d 0 /f')
 
 if 'OneDrive' and 'Microsoft OneDrive' in apps:
-    print('Changing OneDrive paths to local paths. Move files if there are any after reboot.')
+    print('\n\nChanging OneDrive paths to local paths. Move files if there are any after reboot.')
     
     # My Pictures
     run('Set-ItemProperty -Path \'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\' -Name \'{0DDD015D-B06C-45D5-8C4C-F59713854639}\' -Value \'%USERPROFILE%\\Pictures\' -Force')
@@ -117,3 +122,5 @@ if 'OneDrive' and 'Microsoft OneDrive' in apps:
 
     # Desktop
     run('Set-ItemProperty -Path \'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\' -Name \'Desktop\' -Value \'%USERPROFILE%\\Desktop\' -Force')
+
+input('\n\nScript has finished. Reboot your computer. Press enter key to close the window...')
