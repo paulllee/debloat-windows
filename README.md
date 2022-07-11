@@ -4,7 +4,7 @@ This Python script automates the uninstallation of 45+ Windows (and HP) applicat
 
 It will also handle the Registries for Xbox Game Bar and OneDrive.
 
-*Edge* is not included because of Windows 11's strict file extensions that only work with Edge.
+`Microsoft Edge` is not included because of Windows 11's strict file extensions that only work with Edge.
 
 # Prerequisites 
 
