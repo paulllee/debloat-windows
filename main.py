@@ -93,12 +93,6 @@ while not isFinish:
         except:
             print('Invalid number.')
 
-apps = [
-    "Xbox Game Bar",
-    "OneDrive",
-    "Microsoft OneDrive"
-]
-
 for name in apps:
     uninstall(name)
 
